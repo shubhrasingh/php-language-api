@@ -3,7 +3,7 @@
 /**
  * Translating language with Google API
  * @author gabe@fijiwebdesign.com
- * @version $id$
+ * @version $Id$
  * @license - Share-Alike 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
  * 
  * Google requires attribution for their Language API, please see: http://code.google.com/apis/ajaxlanguage/documentation/#Branding
