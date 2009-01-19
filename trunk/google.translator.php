@@ -53,7 +53,7 @@ class Google_Translate_API {
 	 * @param $str String
 	 */
 	function _unescapeUTF8EscapeSeq($str) {
-		return preg_replace_callback("/\\\u([0-9a-f]{4})/i", create_function('$matches', 'return Google_Translate_API::_bin2utf8(hexdec("0x".$matches[0]));'), $str);
+		return preg_replace_callback("/\\\u([0-9a-f]{4})/i", create_function('$matches', 'return Google_Translate_API::_bin2utf8(hexdec($matches[1]));'), $str);
 	}
 	
 	/**
@@ -62,6 +62,9 @@ class Google_Translate_API {
 	 * @param $bin Mixed Interger or Hex code of character
 	 */
 	function _bin2utf8($bin) {
+		
+		var_dump($bin);
+		
 		if ($bin <= 0x7F) {
 			return chr($bin);
 		} else if ($bin >= 0x80 && $bin <= 0x7FF) {
