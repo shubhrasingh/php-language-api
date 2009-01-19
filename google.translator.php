@@ -62,9 +62,6 @@ class Google_Translate_API {
 	 * @param $bin Mixed Interger or Hex code of character
 	 */
 	function _bin2utf8($bin) {
-		
-		var_dump($bin);
-		
 		if ($bin <= 0x7F) {
 			return chr($bin);
 		} else if ($bin >= 0x80 && $bin <= 0x7FF) {
