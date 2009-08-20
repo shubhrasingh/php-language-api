@@ -26,8 +26,8 @@ class Google_Translate_API {
 			stream_context_create(
 				array(
 					'http'=>array(
-					'method'=>"GET",
-					'header'=>"Referer: http://".$_SERVER['HTTP_HOST']."/\r\n"
+						'method'=>"GET",
+						'header'=>"Referer: http://".$_SERVER['HTTP_HOST']."/\r\n"
 					)
 				)
 			)
@@ -67,19 +67,12 @@ class Google_Translate_API {
 		} else if ($bin >= 0x80 && $bin <= 0x7FF) {
 			return pack("C*", 0xC0 | $bin >> 6, 0x80 | $bin & 0x3F);
 		} else if ($bin >= 0x800 && $bin <= 0xFFF) {
-			return pack("C*", 11100000 | $bin >> 11, 0x80 | $bin >> 6 & 0x3F, 0x80 | $bin & 0x3F);
+			return pack("C*", 0xE0 | $bin >> 11, 0x80 | $bin >> 6 & 0x3F, 0x80 | $bin & 0x3F);
 		} else if ($bin >= 0x10000 && $bin <= 0x10FFFF) {
-			return pack("C*", 11100000 | $bin >> 17, 0x80 | $bin >> 12 & 0x3F, 0x80 | $bin >> 6& 0x3F, 0x80 | $bin & 0x3F);
+			return pack("C*", 0xE0 | $bin >> 17, 0x80 | $bin >> 12 & 0x3F, 0x80 | $bin >> 6& 0x3F, 0x80 | $bin & 0x3F);
 		}
 	}
 	
-}
-
-// example usage
-$text = 'Welcome "to my " website.';
-$trans_text = Google_Translate_API::translate($text, '', 'it');
-if ($trans_text !== false) {
-	echo $trans_text;
 }
 
 
